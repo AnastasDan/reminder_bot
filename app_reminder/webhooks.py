@@ -2,6 +2,9 @@ from datetime import datetime
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.date import DateTrigger
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from constants import (
     HELLO,
     INVALID_DELETE_COMMAND_FORMAT_MESSAGE,
@@ -11,10 +14,7 @@ from constants import (
     REMINDER_NOT_FOUND_MESSAGE,
 )
 from models import Reminder, User
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 from utils import parse_command, send_message_via_whatsapp
-
 
 scheduler = AsyncIOScheduler()
 scheduler.start()

@@ -7,9 +7,9 @@ from twilio.rest import Client
 
 load_dotenv()
 
-account_sid = os.getenv("TWILIO_ACCOUNT_SID")
-auth_token = os.getenv("TWILIO_AUTH_TOKEN")
-from_whatsapp_number = os.getenv("TWILIO_WHATSAPP_NUMBER")
+ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+FROM_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")
 
 
 def determine_command(message: str):
@@ -40,8 +40,8 @@ def parse_command(message):
 async def send_message_via_whatsapp(message: str, to: str):
     """Отправляет сообщение через WhatsApp, используя Twilio API."""
     http_client = AsyncTwilioHttpClient()
-    client = Client(account_sid, auth_token, http_client=http_client)
+    client = Client(ACCOUNT_SID, AUTH_TOKEN, http_client=http_client)
     message_instance = await client.messages.create_async(
-        from_=from_whatsapp_number, body=message, to=to
+        from_=FROM_WHATSAPP_NUMBER, body=message, to=to
     )
     return message_instance.sid
