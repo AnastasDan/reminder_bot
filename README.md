@@ -31,7 +31,7 @@ git clone git@github.com:AnastasDan/reminder_bot.git
 docker compose -f docker-compose.yml up
 ```
 
-4. Создание таблиц в БД.
+4. Создаем таблицы в БД.
 
 ```bash
 docker compose -f docker-compose.yml exec web python create_db.py
